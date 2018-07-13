@@ -17,7 +17,46 @@ class SocialCard extends React.Component {
 	}
 }
 
+class Clock extends React.Component {
+	constructor(props){
+		super(props);
 
+		// you can ONLY set the state in the constructor
+		this.state = {
+			date: new Date()
+		};
+	}
+
+	// called when component is rendered to the DOM for the first time
+	componentDidMount(){
+		
+		this.timerID = setInterval(() => this.tick(),1000);
+	}
+
+	tick(){
+		// need to change state? use this.setState(); NOT this.state.propertyname.value
+		this.setState({
+			date: new Date()
+		});
+	}
+
+	// called when the DOM produced by the component is removed
+	componentWillUnmount(){
+		window.clearInterval(this.timerID);
+	}
+
+	render() {
+		return (
+		<div>
+			<h1>Hello world</h1>
+			<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+		</div>
+		);
+	}
+}
+
+
+ReactDOM.render(<Clock />, document.getElementById("root"));
 
 const element = (
 	<div>
