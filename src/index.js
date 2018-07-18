@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Counter from './Counter';
+import Toggle from './Toggle';
+import Tweet from './Tweet';
+import Login from './Login';
 import registerServiceWorker from './registerServiceWorker';
 
 function TextBlock(props){
@@ -75,4 +79,8 @@ const holder = (
 // ReactDOM.render(<SocialCard name="Jerry" />, document.getElementById('social_holder'));
 // ReactDOM.render(element, document.getElementById('constant_holder'));
 ReactDOM.render(holder, document.getElementById('holder_holder'));
+ReactDOM.render(<Toggle/>, document.getElementById('toggle_holder'));
+ReactDOM.render(<Counter/>, document.getElementById('counter_holder'));
+ReactDOM.render(<Tweet handleName="@ThomasChuah" message="This is my message." image="https://www.gravatar.com/avatar/nothing"/>, document.getElementById('twitter'));
+ReactDOM.render(<Login/>, document.getElementById('login_holder'));
 registerServiceWorker();
