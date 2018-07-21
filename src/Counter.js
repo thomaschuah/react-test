@@ -14,15 +14,24 @@ function GuestGreeting(props){
 		);
 }
 
+function ListItem(props){
+	let value = props.value;
+	return (
+		<li>{value}</li>
+		);
+}
+
 function NumberListing(props){
 	let numbers;
 	if (props.numbers && props.numbers.length>0){
 		numbers = props.numbers;
+		numbers = numbers.map((number, index) => <ListItem key={index} value={number} />)
 
-		numbers = numbers.map((number) => <li>{number}</li>)
 	} else {
 		return null;
+
 	}
+	
 	return (
 		<ul>
 			{numbers}

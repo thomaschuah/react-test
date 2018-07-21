@@ -6,6 +6,7 @@ import Counter from './Counter';
 import Toggle from './Toggle';
 import Tweet from './Tweet';
 import Login from './Login';
+import Blog from './Blog';
 import registerServiceWorker from './registerServiceWorker';
 
 function TextBlock(props){
@@ -83,4 +84,10 @@ ReactDOM.render(<Toggle/>, document.getElementById('toggle_holder'));
 ReactDOM.render(<Counter/>, document.getElementById('counter_holder'));
 ReactDOM.render(<Tweet handleName="@ThomasChuah" message="This is my message." image="https://www.gravatar.com/avatar/nothing"/>, document.getElementById('twitter'));
 ReactDOM.render(<Login/>, document.getElementById('login_holder'));
+
+const posts = [
+{id:1, title:'This is my title', content:'The quick brown fox jumped over the lazy dog.'},
+{id:2, title:'This is not my title', content: 'The quick red dog jumped over the lazy fox.'}
+];
+ReactDOM.render(<Blog posts={posts}/>, document.getElementById('blog_holder'));
 registerServiceWorker();
