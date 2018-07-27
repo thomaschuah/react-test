@@ -18,7 +18,7 @@ class Blog extends React.Component {
 	render(){
 		let posts = this.props.posts;
 
-		posts = posts.map((post) => <BlogPost id={post.id} title={post.title} content={post.content}/>);
+		posts = posts.map((post) => <BlogPost key={post.id} title={post.title} content={post.content}/>);
 
 		return (
 			<ul>
