@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Form from './Form';
 import Counter from './Counter';
 import Toggle from './Toggle';
 import Tweet from './Tweet';
@@ -84,6 +85,14 @@ ReactDOM.render(<Toggle/>, document.getElementById('toggle_holder'));
 ReactDOM.render(<Counter/>, document.getElementById('counter_holder'));
 ReactDOM.render(<Tweet handleName="@ThomasChuah" message="This is my message." image="https://www.gravatar.com/avatar/nothing"/>, document.getElementById('twitter'));
 ReactDOM.render(<Login/>, document.getElementById('login_holder'));
+ReactDOM.render(<Form/>, document.getElementById('form_holder'));
+
+ReactDOM.render(<input value="hi" />, document.getElementById('misc_holder'));
+
+setTimeout(function() {
+  ReactDOM.render(<input value={null} />, document.getElementById('misc_holder'));
+}, 5000);
+
 
 const posts = [
 {id:1, title:'This is my title', content:'The quick brown fox jumped over the lazy dog.'},
