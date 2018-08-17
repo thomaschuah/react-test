@@ -174,6 +174,7 @@ ReactDOM.render(<Form/>, document.getElementById('form_holder'));
 
 ReactDOM.render(<input value="hi" />, document.getElementById('misc_holder'));
 ReactDOM.render(<WelcomeDialog />, document.getElementById('containment_holder'));
+ReactDOM.render(<Searcher />, document.getElementById('searcher'));
 ReactDOM.render(
 	<Panelizer 
 		left={
