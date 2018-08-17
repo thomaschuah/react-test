@@ -8,6 +8,7 @@ import Toggle from './Toggle';
 import Tweet from './Tweet';
 import Login from './Login';
 import Blog from './Blog';
+import Searcher from './Searcher';
 import registerServiceWorker from './registerServiceWorker';
 
 // can pass children into another dialog
@@ -33,21 +34,7 @@ var divStyle = {
 	justifyContent: 'space-between'
 
 };
-function Panelizer(props){
-	return (
-		<div >
-			Hello world
-		</div>
-		);
-	
-}
-function Panely(props){
-	return (
-		<div>
-			{props.text}
-		</div>
-		);
-}
+
 
 function TextBlock(props){
 	return <div>
@@ -115,6 +102,65 @@ const holder = (
 		<SocialCard name="my name"/>
 	</div>
 	);
+// an example of containment; component Panelizer doesn't know its children ahead of time
+function Panelizer(props){
+	return (
+		<div style={divStyle}>
+			{props.left}
+			{props.right}
+		</div>
+		);
+	
+}
+function Panely(props){
+	return (
+		<div>
+			{props.text}
+		</div>
+		);
+}
+
+function Dialog(props){
+	return (
+		<FancyBorder color="black">
+			<h1>{props.title}</h1>
+			<p>{props.message}</p>
+			{props.children}
+		</FancyBorder>
+		);
+}
+class SignupDialog extends React.Component {
+	constructor(props){
+		super(props);
+		this.handleChange = this.handleChange.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+		this.state = {value: 'asdf'};
+	}
+	render(){
+		return (
+			<Dialog title="Welcome to Auberge Du Pommier!" 
+					message="Please enter your name.">
+			
+				<input value={this.state.value} 
+						onChange={this.handleChange}/>
+
+				<button onClick={this.handleClick}>
+					Sign Me Up!
+				</button>
+			
+			</Dialog>
+			);
+	}
+	handleChange(event){
+		this.setState({ value: event.target.value });
+	}
+	handleClick(event){
+		alert(`Welcome aboard, ${this.state.value}!`);
+	}
+	
+}
+
+
 
 // ReactDOM.render(<TextBlock title="title 123" body="body goes here" />, document.getElementById('root'));
 // ReactDOM.render(<SocialCard name="Jerry" />, document.getElementById('social_holder'));
@@ -128,11 +174,17 @@ ReactDOM.render(<Form/>, document.getElementById('form_holder'));
 
 ReactDOM.render(<input value="hi" />, document.getElementById('misc_holder'));
 ReactDOM.render(<WelcomeDialog />, document.getElementById('containment_holder'));
-ReactDOM.render(<Panelizer />, document.getElementById('complex_containment_holder'));
+ReactDOM.render(
+	<Panelizer 
+		left={
+			<Panely text="left"/>
+		} right={
+			<Panely text="right"/>
+		} />, document.getElementById('complex_containment_holder'));
 
-setTimeout(function() {
-  ReactDOM.render(<input value={null} />, document.getElementById('misc_holder'));
-}, 5000);
+ReactDOM.render(<SignupDialog />, document.getElementById('signup_dialog_holder'));
+
+
 
 
 const posts = [
