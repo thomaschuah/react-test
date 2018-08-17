@@ -10,6 +10,45 @@ import Login from './Login';
 import Blog from './Blog';
 import registerServiceWorker from './registerServiceWorker';
 
+// can pass children into another dialog
+function FancyBorder(props){
+	return (
+		<div className={'classy classy-' + props.color}>
+		{props.children}
+		</div>
+		);
+}
+function WelcomeDialog(props){
+	return (
+		<FancyBorder color='blue'>
+			<p>Hello jock</p>
+			<p>Hello jill</p>
+		</FancyBorder>
+		);
+}
+
+var divStyle = {
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'space-between'
+
+};
+function Panelizer(props){
+	return (
+		<div >
+			Hello world
+		</div>
+		);
+	
+}
+function Panely(props){
+	return (
+		<div>
+			{props.text}
+		</div>
+		);
+}
+
 function TextBlock(props){
 	return <div>
 			<h1>{props.title}</h1>
@@ -88,6 +127,8 @@ ReactDOM.render(<Login/>, document.getElementById('login_holder'));
 ReactDOM.render(<Form/>, document.getElementById('form_holder'));
 
 ReactDOM.render(<input value="hi" />, document.getElementById('misc_holder'));
+ReactDOM.render(<WelcomeDialog />, document.getElementById('containment_holder'));
+ReactDOM.render(<Panelizer />, document.getElementById('complex_containment_holder'));
 
 setTimeout(function() {
   ReactDOM.render(<input value={null} />, document.getElementById('misc_holder'));
