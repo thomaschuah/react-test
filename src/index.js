@@ -8,8 +8,9 @@ import Toggle from './Toggle';
 import Tweet from './Tweet';
 import Login from './Login';
 import Blog from './Blog';
-import Searcher from './Searcher';
+import FilterableProductTable from './Searcher';
 import registerServiceWorker from './registerServiceWorker';
+
 
 // can pass children into another dialog
 function FancyBorder(props){
@@ -88,7 +89,7 @@ class Clock extends React.Component {
 }
 
 
-ReactDOM.render(<Clock />, document.getElementById("root"));
+
 
 const element = (
 	<div>
@@ -162,28 +163,31 @@ class SignupDialog extends React.Component {
 
 
 
+//ReactDOM.render(<Clock />, document.getElementById("root"));
 // ReactDOM.render(<TextBlock title="title 123" body="body goes here" />, document.getElementById('root'));
 // ReactDOM.render(<SocialCard name="Jerry" />, document.getElementById('social_holder'));
 // ReactDOM.render(element, document.getElementById('constant_holder'));
-ReactDOM.render(holder, document.getElementById('holder_holder'));
-ReactDOM.render(<Toggle/>, document.getElementById('toggle_holder'));
-ReactDOM.render(<Counter/>, document.getElementById('counter_holder'));
-ReactDOM.render(<Tweet handleName="@ThomasChuah" message="This is my message." image="https://www.gravatar.com/avatar/nothing"/>, document.getElementById('twitter'));
-ReactDOM.render(<Login/>, document.getElementById('login_holder'));
-ReactDOM.render(<Form/>, document.getElementById('form_holder'));
 
-ReactDOM.render(<input value="hi" />, document.getElementById('misc_holder'));
-ReactDOM.render(<WelcomeDialog />, document.getElementById('containment_holder'));
-ReactDOM.render(<Searcher />, document.getElementById('searcher'));
-ReactDOM.render(
-	<Panelizer 
-		left={
-			<Panely text="left"/>
-		} right={
-			<Panely text="right"/>
-		} />, document.getElementById('complex_containment_holder'));
 
-ReactDOM.render(<SignupDialog />, document.getElementById('signup_dialog_holder'));
+// ReactDOM.render(holder, document.getElementById('holder_holder'));
+// ReactDOM.render(<Toggle/>, document.getElementById('toggle_holder'));
+// ReactDOM.render(<Counter/>, document.getElementById('counter_holder'));
+// ReactDOM.render(<Tweet handleName="@ThomasChuah" message="This is my message." image="https://www.gravatar.com/avatar/nothing"/>, document.getElementById('twitter'));
+// ReactDOM.render(<Login/>, document.getElementById('login_holder'));
+// ReactDOM.render(<Form/>, document.getElementById('form_holder'));
+
+// ReactDOM.render(<input value="hi" />, document.getElementById('misc_holder'));
+// ReactDOM.render(<WelcomeDialog />, document.getElementById('containment_holder'));
+ReactDOM.render(<FilterableProductTable />, document.getElementById('searcher'));
+// ReactDOM.render(
+// 	<Panelizer 
+// 		left={
+// 			<Panely text="left"/>
+// 		} right={
+// 			<Panely text="right"/>
+// 		} />, document.getElementById('complex_containment_holder'));
+
+//ReactDOM.render(<SignupDialog />, document.getElementById('signup_dialog_holder'));
 
 
 
@@ -192,5 +196,5 @@ const posts = [
 {id:1, title:'This is my title', content:'The quick brown fox jumped over the lazy dog.'},
 {id:2, title:'This is not my title', content: 'The quick red dog jumped over the lazy fox.'}
 ];
-ReactDOM.render(<Blog posts={posts}/>, document.getElementById('blog_holder'));
+//ReactDOM.render(<Blog posts={posts}/>, document.getElementById('blog_holder'));
 registerServiceWorker();
