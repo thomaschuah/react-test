@@ -178,7 +178,17 @@ class SignupDialog extends React.Component {
 
 // ReactDOM.render(<input value="hi" />, document.getElementById('misc_holder'));
 // ReactDOM.render(<WelcomeDialog />, document.getElementById('containment_holder'));
-ReactDOM.render(<FilterableProductTable />, document.getElementById('searcher'));
+
+const products = [
+  {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
+  {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
+  {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
+  {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
+  {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
+  {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
+];
+
+ReactDOM.render(<FilterableProductTable products={products} />, document.getElementById('searcher'));
 // ReactDOM.render(
 // 	<Panelizer 
 // 		left={
