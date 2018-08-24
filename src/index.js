@@ -8,6 +8,7 @@ import Toggle from './Toggle';
 import Tweet from './Tweet';
 import Login from './Login';
 import Blog from './Blog';
+import TodoApp from './TodoList';
 import FilterableProductTable from './Searcher';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -189,6 +190,18 @@ const products = [
 ];
 
 ReactDOM.render(<FilterableProductTable products={products} />, document.getElementById('searcher'));
+
+const items = [
+	{label: "Buy milk", completed: false},
+	{label: "Buy chocolate", completed: false},
+	{label: "Read news", completed: true},
+	{label: "Watch TV", completed: true},
+]
+
+ReactDOM.render(<TodoApp items={items} />, document.getElementById('todo_holder'));
+
+
+
 // ReactDOM.render(
 // 	<Panelizer 
 // 		left={
