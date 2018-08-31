@@ -9,6 +9,8 @@ import Tweet from './Tweet';
 import Login from './Login';
 import Blog from './Blog';
 import TodoApp from './TodoList';
+import Reddit from './Reddit';
+import WeatherApp from './Weather';
 import FilterableProductTable from './Searcher';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -199,6 +201,23 @@ const items = [
 ]
 
 ReactDOM.render(<TodoApp items={items} />, document.getElementById('todo_holder'));
+
+const newsdata = [
+{headline:'abc123', content: 'xyz123'},
+{headline:'abc123', content: 'xyz123'},
+{headline:'abc123', content: 'xyz123'}
+];
+//ReactDOM.render(<Reddit data={newsdata} />, document.getElementById('reddit_holder'));
+
+const weather_data = [
+{day:'Thursday August 30', high: 23, low:13},
+{day:'Friday August 31', high: 23, low:13},
+{day:'Saturday September 1', high: 23, low:13},
+{day:'Sunday September 2', high: 23, low:13},
+{day:'Monday September 3', high: 23, low:13},
+];
+
+ReactDOM.render(<WeatherApp data={weather_data} />, document.getElementById('weather_holder'));
 
 
 

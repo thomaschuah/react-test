@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';	
+
 /*
 What state do we need?
 
@@ -32,20 +34,23 @@ class TodoItem extends React.Component {
 	render(){
 
 		const completedStyle = {
-			textDecoration:'line-through'
+			textDecoration:'line-through',
+			cursor:'pointer'
 		};
-		let style = {};
+		let style = {
+			cursor:'pointer'
+		};
 
 		let checkbox;
 
 		if (this.props.mode == "complete"){
 			style = completedStyle;
 		} else {
-			checkbox = <span><input type="checkbox" onChange={this.props.handleCheck}/></span>
+			checkbox = <span><input type="checkbox"  data-label={this.props.label} /></span>
 		}
 
 		return (
-			<div style={style}>
+			<div style={style}  data-label={this.props.label} onClick={this.props.handleCheck}>
 				{this.props.label} 
 				{checkbox}
 			</div>
@@ -67,7 +72,7 @@ class TodoTable extends React.Component {
 				return item.completed == completed;
 			})
 			.forEach((item)=>{
-				collection.push(<TodoItem onChange={this.props.handleCheck} mode={this.props.mode} key={item.label} label={item.label} />);
+				collection.push(<TodoItem handleCheck={this.props.handleCheck} mode={this.props.mode} key={item.label} label={item.label} />);
 			});
 
 		return (
@@ -89,13 +94,21 @@ class TodoApp extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleCheck = this.handleCheck.bind(this, 'key');
+		this.handleCheck = this.handleCheck.bind(this);
 	}
-	handleCheck(param, event){
+	
+	handleCheck(event){
+
 		let items = this.state.todoItems;
 
-		let selected_item = items.find((item)=>(item.label==param));
-		selected_item.completed = true;
+		// get current row's attributes
+		
+		let label = event.target.dataset.label;
+
+		// flip the status of the item
+		let selected_item = items.find((item)=>(item.label==label));
+		selected_item.completed = !selected_item.completed;
+
 		this.setState({
 			todoItems: items
 		});
